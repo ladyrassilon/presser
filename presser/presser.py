@@ -4,7 +4,9 @@ import execjs
 import re
 import urlparse
 
-class Presser():
+from .exceptions import PresserJavaScriptParseError, PresserURLError
+
+class Presser:
     def get_data_for_vine_id(self, vine_id):
         page = requests.get("https://vine.co/v/{}".format(vine_id))
         if page.ok:
@@ -18,13 +20,20 @@ class Presser():
                         if line.count("window.POST_DATA"):
                             script_lines.append(line.replace("window.POST_DATA = ", ""))
             if len(script_lines) > 1:
-                raise Exception("More post data extracted than expected")
+                raise PresserJavaScriptParseError("More POST_DATA extracted than expected")
+            if not script_lines:
+                raise PresserJavaScriptParseError("No POST_DATA extracted")
             script_line = script_lines[0].replace("POST = ","")
-            data = execjs.eval(script_line)
-            vine = data[vine_id]
-            return vine
+            try:
+                data = execjs.eval(script_line)
+                vine = data[vine_id]
+                return vine
+            except Exception, e:
+                error_message = "Problem with parsing, check parsing logic. {}".format(e.msg)
+                raise PresserJavaScriptParseError(error_message)
         else:
-            raise Exception(msg="{} - {}".format(page.status_code,page.content))
+            raise PresserURLError("{} could not be accessed {} - {}".format(page.url, page.status_code,page.content))
+
     def get_data_for_vine_from_url(self, url):
         parsed_url = urlparse.urlparse(url)
         if parsed_url.netloc == "vine.co":
@@ -33,6 +42,6 @@ class Presser():
                 vine_id = results.group("vine_id")
                 return self.get_data_for_vine_id(vine_id)
             except IndexError:
-                raise Exception(msg="{} does not contain a valid vine id".format(parsed_url.path))
+                raise PresserURLError("{} does not contain a valid vine id".format(parsed_url.path))
         else:
-            raise Exception(msg="{} is not a valid vine domain".format(parsed_url.netloc))
+            raise PresserURLError("{} is not a valid vine domain".format(parsed_url.netloc))
