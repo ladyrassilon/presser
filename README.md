@@ -17,8 +17,6 @@ However, here is the example usage.
 
 ##Warning
 
-Vine does not allow scraping, so please do not use this in an automated fashion, but it should be okay that if a user were to go to the url, then you can automate the extraction.
-
-So if you were to get the user to paste the vine url and extract the data, then you should be okay.
+Vine does not allow scraping, so please do not use this in an automated fashion, but it should be okay if your workflow simplifies and speeds up the workflow of a user going to an url and extracting the data manually. 
 
 If you try to do large batches of vine urls for extraction in a short period of time, then you will probably annoy Vine. Don't do this please.
