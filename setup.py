@@ -8,6 +8,6 @@ setup(name="Presser",
     author="Gemma Hentsch",
     author_email="contact@halfapenguin.com",
     requires=["beautifulsoup4(>=4.3.2)","requests(>=2.4.0)", "mock(>=1.0.1)"],
-    long_description=open("README.txt").read(),
+    long_description=open("README.md").read(),
     test_suite="tests",
 )
