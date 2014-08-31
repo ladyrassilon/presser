@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(name="Presser",
     version="0.1",
@@ -7,6 +7,7 @@ setup(name="Presser",
     description="Extracts data from vine, in lieu of an API",
     author="Gemma Hentsch",
     author_email="contact@halfapenguin.com",
-    requires=["beautifulsoup4(>=4.3.2)","requests(>=2.4.0)"],
+    requires=["beautifulsoup4(>=4.3.2)","requests(>=2.4.0)", "mock(>=1.0.1)"],
     long_description=open("README.txt").read(),
+    test_suite="tests",
 )

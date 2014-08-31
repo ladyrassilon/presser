@@ -22,7 +22,7 @@ class Presser:
             if len(script_lines) > 1:
                 raise PresserJavaScriptParseError("More POST_DATA extracted than expected")
             if not script_lines:
-                raise PresserJavaScriptParseError("No POST_DATA extracted")
+                raise PresserJavaScriptParseError("No POST_DATA extracted for id {}".format(vine_id))
             script_line = script_lines[0].replace("POST = ","")
             try:
                 data = execjs.eval(script_line)
