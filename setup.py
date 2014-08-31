@@ -1,13 +1,13 @@
 from setuptools import setup
 
 setup(name="Presser",
-    version="0.1",
+    version="0.1.1",
     packages=["presser",],
     license="GNU GPL v3.0",
     description="Extracts data from vine, in lieu of an API",
     author="Gemma Hentsch",
     author_email="contact@halfapenguin.com",
     requires=["beautifulsoup4(>=4.3.2)","requests(>=2.4.0)", "mock(>=1.0.1)"],
-    long_description=open("README.txt").read(),
+    long_description=open("README.md").read(),
     test_suite="tests",
 )
