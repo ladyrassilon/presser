@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name="Presser",
-    version="0.1",
+    version="0.1.1",
     packages=["presser",],
     license="GNU GPL v3.0",
     description="Extracts data from vine, in lieu of an API",
