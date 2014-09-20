@@ -16,6 +16,8 @@ setup(name="Presser",
         "mock(>=1.0.1)", 
         "coverage(>=3.7.1)", 
         "nose(>=1.3.4)", 
+        "PyExecJS(>=1.0.4)",
+        "responses(>=0.2.2)"
         # "nose-cover3(>=0.1.0)",
     ],
     long_description=long_description,
