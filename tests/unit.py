@@ -5,10 +5,12 @@ import requests
 from mock import patch
 
 from presser.presser import Presser
-from presser.exceptions import PresserJavaScriptParseError, PresserURLError
+from presser.exceptions import Presser404Error
 
 VINE_URL = 'https://vine.co/v/M0WmADraAD2'
 VINE_ID = 'M0WmADraAD2'
+
+NOT_FOUND_URL = "https://vine.co/v/NOTAVINE"
 
 class PressingUnitTest(unittest.TestCase):
 
@@ -29,3 +31,12 @@ class PressingUnitTest(unittest.TestCase):
                   content_type='text/html')
         vine = self.presser.get_data_for_vine_id(VINE_ID)
         self.assertEqual(VINE_URL, vine["permalinkUrl"])
+
+    @responses.activate
+    def test_404_detection_logic(self):
+        with open("tests/404.html") as not_found_html:
+            body = not_found_html.read()
+        responses.add(responses.GET, NOT_FOUND_URL,
+                    body=body, status=200,
+                    content_type='text/html')
+        self.assertRaises(Presser404Error, self.presser.get_data_for_vine_from_url, "https://vine.co/v/NOTAVINE")
