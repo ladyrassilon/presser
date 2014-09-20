@@ -22,8 +22,10 @@ class PressingUnitTest(unittest.TestCase):
 
     @responses.activate
     def test_vine_data_extraction(self):
+        with open("tests/dummy.html") as dummy_html:
+            body = dummy_html.read()
         responses.add(responses.GET, VINE_URL,
-                  body=open("tests/dummy.html","r").read(), status=200,
+                  body=body, status=200,
                   content_type='text/html')
         vine = self.presser.get_data_for_vine_id(VINE_ID)
         self.assertEqual(VINE_URL, vine["permalinkUrl"])
