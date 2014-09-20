@@ -11,8 +11,8 @@ class Presser:
         try:
             page = requests.get("https://vine.co/v/{}".format(vine_id))
         except requests.exceptions.RequestException as e:
-            error_message = "Problem with comminicating with vine page - {}".format(e.msg)
-            raise PresserRequestError(error_message=error_message)
+            error_message = "Problem with comminicating with vine page - {}".format(e.message)
+            raise PresserRequestError(error_message)
         if page.ok:
             content = BeautifulSoup(page.content)
             if content.find("title").text == u'Vine':
@@ -35,8 +35,8 @@ class Presser:
                 data = execjs.eval(script_line)
                 vine = data[vine_id]
                 return vine
-            except Exception, e:
-                error_message = "Problem with parsing, check parsing logic. {}".format(e.msg)
+            except execjs.RuntimeError, e:
+                error_message = "Problem with parsing, check parsing logic. {}".format(e.message)
                 raise PresserJavaScriptParseError(error_message)
         else:
             raise PresserURLError("{} could not be accessed {} - {}".format(page.url, page.status_code,page.content))
