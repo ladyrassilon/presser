@@ -4,7 +4,7 @@ import execjs
 import re
 import urlparse
 
-from .exceptions import PresserJavaScriptParseError, PresserURLError, Presser404Error, PresserRequestError
+from .exceptions import PresserJavaScriptParseError, PresserURLError, Presser404Error, PresserRequestError, PresserInvalidVineIdError
 
 class Presser:
     def get_data_for_vine_id(self, vine_id):
@@ -30,7 +30,7 @@ class Presser:
                 raise PresserJavaScriptParseError("More POST_DATA extracted than expected")
             if not script_lines:
                 raise PresserJavaScriptParseError("No POST_DATA extracted for id {}".format(vine_id))
-            script_line = script_lines[0].replace("POST = ","")
+            script_line = script_lines[0].replace("POST = ", "")
             try:
                 data = execjs.eval(script_line)
                 vine = data[vine_id]
@@ -45,10 +45,10 @@ class Presser:
         parsed_url = urlparse.urlparse(url)
         if parsed_url.netloc == "vine.co":
             results = re.search('/v/(?P<vine_id>\w+)',parsed_url.path)
-            try:
+            if results:
                 vine_id = results.group("vine_id")
                 return self.get_data_for_vine_id(vine_id)
-            except IndexError:
-                raise PresserURLError("{} does not contain a valid vine id".format(parsed_url.path))
+            else:
+                raise PresserInvalidVineIdError("{} does not contain a valid vine id".format(parsed_url.path))    
         else:
             raise PresserURLError("{} is not a valid vine domain".format(parsed_url.netloc))

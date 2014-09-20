@@ -89,9 +89,6 @@ class VineStructureTest(unittest.TestCase):
     def test_non_existant_vine_errors(self):
         self.assertRaises(Presser404Error, self.presser.get_data_for_vine_from_url, "https://vine.co/v/NOTAVINE")
 
-    def test_not_vine_url(self):
-        self.assertRaises(PresserURLError, self.presser.get_data_for_vine_from_url, "http://www.google.com")
-
     def test_keys_in_response(self):
         KEYS = [
             u'username',
