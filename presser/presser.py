@@ -4,13 +4,20 @@ import execjs
 import re
 import urlparse
 
-from .exceptions import PresserJavaScriptParseError, PresserURLError
+from .exceptions import PresserJavaScriptParseError, PresserURLError, Presser404Error, PresserRequestError
 
 class Presser:
     def get_data_for_vine_id(self, vine_id):
-        page = requests.get("https://vine.co/v/{}".format(vine_id))
+        try:
+            page = requests.get("https://vine.co/v/{}".format(vine_id))
+        except requests.exceptions.RequestException as e:
+            error_message = "Problem with comminicating with vine page - {}".format(e.msg)
+            raise PresserRequestError(error_message=error_message)
         if page.ok:
             content = BeautifulSoup(page.content)
+            if content.find("title").text == u'Vine':
+                if not content.find("body").text.count(u"Video:"):
+                    raise Presser404Error("Could not find Vine Id {}".format(vine_id))
             all_script_tags = content.find_all("script")
             potential_script_tags = [script for script in all_script_tags if not script.has_attr("src")]
             script_lines = []

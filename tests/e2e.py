@@ -1,7 +1,7 @@
 import unittest
 
 from presser.presser import Presser
-from presser.exceptions import PresserJavaScriptParseError, PresserURLError
+from presser.exceptions import PresserJavaScriptParseError, PresserURLError, Presser404Error, PresserRequestError
 
 EXPECTED_VINE = {
     u'avatarUrl': u'http://v.cdn.vine.co/r/avatars/9D5770C2B11093640923147292672_241c89c013c.0.4.jpg?versionId=N7epx0AXV8yx.ZR1EnwMaqyn1riq1Hgm',
@@ -87,7 +87,7 @@ class VineStructureTest(unittest.TestCase):
         self.assertEqual(vine["permalinkUrl"], EXPECTED_VINE_URL)
 
     def test_non_existant_vine_errors(self):
-        self.assertRaises(PresserJavaScriptParseError, self.presser.get_data_for_vine_from_url, "https://vine.co/v/NOTAVINE")
+        self.assertRaises(Presser404Error, self.presser.get_data_for_vine_from_url, "https://vine.co/v/NOTAVINE")
 
     def test_not_vine_url(self):
         self.assertRaises(PresserURLError, self.presser.get_data_for_vine_from_url, "http://www.google.com")
