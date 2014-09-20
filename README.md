@@ -2,6 +2,8 @@
 
 This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
 
+You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be dependent, but as yet, I've not found a viable alternative.
+
 However, here is the example usage.
     from presser.presser import Presser
     press = Presser()
