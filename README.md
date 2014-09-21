@@ -1,5 +1,7 @@
 #Presser v0.1
-
+[![Coverage Status](https://coveralls.io/repos/ladyrassilon/presser/badge.png?branch=develop)](https://coveralls.io/r/ladyrassilon/presser?branch=develop)
+[![Build Status](https://travis-ci.org/ladyrassilon/presser.svg?branch=master)](https://travis-ci.org/ladyrassilon/presser)
+[![Downloads](https://pypip.in/download/Presser/badge.svg)](https://pypi.python.org/pypi/Presser/)
 This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
 
 You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be node dependent, but as yet, I've not found a viable alternative.
