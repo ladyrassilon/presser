@@ -7,6 +7,6 @@ python:
 install:
   - pip install coveralls 
 script:
-  - python setup.py nosetests
+  - python setup.py nosetests --with-coverage --cover-package=presser
 after_success:
     - coveralls
