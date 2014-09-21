@@ -2,7 +2,7 @@
 
 This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
 
-You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be dependent, but as yet, I've not found a viable alternative.
+You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be node dependent, but as yet, I've not found a viable alternative.
 
 However, here is the example usage.
     from presser.presser import Presser
@@ -19,6 +19,6 @@ However, here is the example usage.
 
 ##Warning
 
-Vine does not allow scraping, so please do not use this in an automated fashion, but it should be okay if your workflow simplifies and speeds up the workflow of a user going to an url and extracting the data manually. 
+Vine does not permit scraping, so please do not use this in an automated fashion, but it should be okay if your workflow simplifies and speeds up the workflow of a user going to an url and extracting the data manually. 
 
 If you try to do large batches of vine urls for extraction in a short period of time, then you will probably annoy Vine. Don't do this please.
