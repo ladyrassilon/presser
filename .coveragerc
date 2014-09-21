@@ -1,0 +1,7 @@
+[run]
+source = presser
+[report]
+omit =
+    */python?.?/*
+    */site-packages/nose/*
+    tests/*

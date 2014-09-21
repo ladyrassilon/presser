@@ -70,7 +70,7 @@ class PressingUnitTest(unittest.TestCase):
         self.assertRaises(PresserJavaScriptParseError, self.presser.get_data_for_vine_from_url, VINE_URL)
 
     @responses.activate
-    def test_extra_script_in_valid_vine_page(self):
+    def test_broken_script_in_valid_vine_page(self):
         with open("tests/broken_js.html") as broken_js:
             body = broken_js.read()
         responses.add(responses.GET, VINE_URL,
