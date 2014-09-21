@@ -147,5 +147,5 @@ class VineStructureTest(unittest.TestCase):
             u'videoUrl': u'http://mtc.cdn.vine.co/r/videos/DFCD3B0B9C1104202213573693440_22f7d6615ca.1.2.5318815706057142197.mp4?versionId=jnyF8noA.fT_Egg2Yg1VUSxqjkdDHTZD'
         }
         vine = self.presser.get_data_for_vine_from_url(EXPECTED_VINE_URL)
-        for key, value in EXPECTED_STATIC_VALUES.iteritems():
+        for key, value in EXPECTED_STATIC_VALUES.items():
             self.assertEqual(value, vine[key])

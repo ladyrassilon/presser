@@ -1,8 +1,8 @@
-import requests
-from bs4 import BeautifulSoup
 import execjs
 import re
-import urlparse
+import requests
+from bs4 import BeautifulSoup
+from six.moves import urllib
 
 from .exceptions import PresserJavaScriptParseError, PresserURLError, Presser404Error, PresserRequestError, PresserInvalidVineIdError
 
@@ -11,7 +11,7 @@ class Presser:
         try:
             page = requests.get("https://vine.co/v/{}".format(vine_id))
         except requests.exceptions.RequestException as e:
-            error_message = "Problem with comminicating with vine page - {}".format(e.message)
+            error_message = "Problem with comminicating with vine page - {}".format(e)
             raise PresserRequestError(error_message)
         if page.ok:
             content = BeautifulSoup(page.content)
@@ -35,14 +35,14 @@ class Presser:
                 data = execjs.eval(script_line)
                 vine = data[vine_id]
                 return vine
-            except execjs.RuntimeError, e:
-                error_message = "Problem with parsing, check parsing logic. {}".format(e.message)
+            except execjs.RuntimeError as e:
+                error_message = "Problem with parsing, check parsing logic. {}".format(e)
                 raise PresserJavaScriptParseError(error_message)
         else:
             raise PresserURLError("{} could not be accessed {} - {}".format(page.url, page.status_code,page.content))
 
     def get_data_for_vine_from_url(self, url):
-        parsed_url = urlparse.urlparse(url)
+        parsed_url = urllib.parse.urlparse(url)
         if parsed_url.netloc == "vine.co":
             results = re.search('/v/(?P<vine_id>\w+)',parsed_url.path)
             if results:
