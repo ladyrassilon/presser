@@ -40,7 +40,7 @@ setup(name="Presser",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: Implementation",
         "Programming Language :: Python :: Implementation :: CPython",
-        # "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Implementation :: PyPy",
         "Programming Language :: Python",
         "Intended Audience :: Developers",
     ]
