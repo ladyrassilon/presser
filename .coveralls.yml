@@ -1,3 +1,2 @@
 service_name: travis-ci
-repo_token: k4rbtDR9kpFqHfQDDACAoSwGEfieMeAWF
 url: git://github.com/ladyrassilon/presser.git
