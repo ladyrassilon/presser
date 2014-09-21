@@ -1,7 +1,9 @@
 #Presser v0.1
-[![Coverage Status](https://coveralls.io/repos/ladyrassilon/presser/badge.png?branch=master)](https://coveralls.io/r/ladyrassilon/presser?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/ladyrassilon/presser/badge.png?branch=master)](https://coveralls.io/r/ladyrassilon/presser?branch=master)
 [![Build Status](https://travis-ci.org/ladyrassilon/presser.svg?branch=master)](https://travis-ci.org/ladyrassilon/presser)
-[![Downloads](https://pypip.in/download/Presser/badge.svg)](https://pypi.python.org/pypi/Presser/)
+[![Latest Version](https://pypip.in/version/Presser/badge.svg)](https://pypi.python.org/pypi/Presser/)
+[![Supported Python versions](https://pypip.in/py_versions/Presser/badge.svg)](https://pypi.python.org/pypi/Presser/)
+[![Development Status](https://pypip.in/status/Presser/badge.svg)](https://pypi.python.org/pypi/Presser/)
 
 This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
 

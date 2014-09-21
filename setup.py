@@ -21,5 +21,10 @@ setup(name="Presser",
     ],
     long_description=long_description,
     test_suite="nose.collector",
-    url="https://github.com/ladyrassilon/presser"
+    url="https://github.com/ladyrassilon/presser",
+    keywords = ['scraping','vine'],
+    download_url="https://github.com/ladyrassilon/presser/archive/",
+    classifiers=[
+        "Development Status :: 4 - Beta"
+    ]
 )
