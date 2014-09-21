@@ -4,3 +4,4 @@ source = presser
 omit =
     */python?.?/*
     */site-packages/nose/*
+    tests/*
