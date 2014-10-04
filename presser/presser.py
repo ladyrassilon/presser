@@ -15,9 +15,6 @@ class Presser:
             raise PresserRequestError(error_message)
         if page.ok:
             content = BeautifulSoup(page.content)
-            if content.find("title").text == u'Vine':
-                if not content.find("body").text.count(u"Video:"):
-                    raise Presser404Error("Could not find Vine Id {}".format(vine_id))
             all_script_tags = content.find_all("script")
             potential_script_tags = [script for script in all_script_tags if not script.has_attr("src")]
             script_lines = []
@@ -38,6 +35,8 @@ class Presser:
             except execjs.RuntimeError as e:
                 error_message = "Problem with parsing, check parsing logic. {}".format(e)
                 raise PresserJavaScriptParseError(error_message)
+        elif page.status_code == 404:
+            raise Presser404Error("{} could not be found".format(page.url))
         else:
             raise PresserURLError("{} could not be accessed {} - {}".format(page.url, page.status_code,page.content))
 
