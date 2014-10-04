@@ -2,7 +2,7 @@ import unittest
 import responses
 import requests
 
-from mock import patch
+from mock import patch, MagicMock
 
 from presser.presser import Presser
 from presser.exceptions import Presser404Error, PresserURLError, PresserInvalidVineIdError, PresserJavaScriptParseError, PresserRequestError
@@ -30,7 +30,7 @@ class PressingUnitTest(unittest.TestCase):
     @patch('presser.presser.Presser.get_data_for_vine_id')
     def test_vine_id_extraction(self, vine_response):
         vine = self.presser.get_data_for_vine_from_url(VINE_URL)
-        self.presser.get_data_for_vine_id.assert_called_with(VINE_ID)
+        self.presser.get_data_for_vine_id.assert_called_with(VINE_ID, timeout=30)
 
     @responses.activate
     def test_vine_data_extraction(self):
@@ -47,7 +47,7 @@ class PressingUnitTest(unittest.TestCase):
         with open("tests/404.html") as not_found_html:
             body = not_found_html.read()
         responses.add(responses.GET, NOT_FOUND_URL,
-                    body=body, status=200,
+                    body=body, status=404,
                     content_type='text/html')
         self.assertRaises(Presser404Error, self.presser.get_data_for_vine_from_url, NOT_FOUND_URL)
 
@@ -85,3 +85,9 @@ class PressingUnitTest(unittest.TestCase):
     @patch("requests.models.Response.ok", False)
     def test_page_not_okay(self):
         self.assertRaises(PresserURLError, self.presser.get_data_for_vine_from_url, VINE_URL)
+
+    @patch("requests.get")
+    def test_timeout_passed_through(self, request_mock):
+        #Yes this is hacky, BUT responses doesn't record the timeout parameter
+        self.assertRaises(TypeError, self.presser.get_data_for_vine_from_url, VINE_URL, timeout=5)
+        requests.get.assert_called_with(VINE_URL, timeout=5)
