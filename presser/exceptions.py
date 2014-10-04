@@ -1,15 +1,18 @@
 
-class PresserJavaScriptParseError(Exception):
+class PresserError(Exception):
+	pass
+
+class PresserJavaScriptParseError(PresserError):
     pass
 
-class PresserInvalidVineIdError(Exception):
+class PresserInvalidVineIdError(PresserError):
     pass
 
-class PresserURLError(Exception):
+class PresserURLError(PresserError):
     pass
 
-class Presser404Error(Exception):
+class Presser404Error(PresserError):
     pass
 
-class PresserRequestError(Exception):
+class PresserRequestError(PresserError):
     pass
