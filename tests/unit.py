@@ -47,7 +47,7 @@ class PressingUnitTest(unittest.TestCase):
         with open("tests/404.html") as not_found_html:
             body = not_found_html.read()
         responses.add(responses.GET, NOT_FOUND_URL,
-                    body=body, status=200,
+                    body=body, status=404,
                     content_type='text/html')
         self.assertRaises(Presser404Error, self.presser.get_data_for_vine_from_url, NOT_FOUND_URL)
 
