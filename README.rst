@@ -17,6 +17,21 @@ Presser v0.1
     :alt: Development Status
 
 
+Important Update 0.1.8
+======================
+
+Vine has changed their video URL structure so now URLs are passed in as a list.
+
+So if you were using the "videoUrl" key, to get the equivalent URL in the new structure.
+    
+.. code:: python
+
+    # You'll need to instead of going to.
+    vine["videoUrl"]
+    # You'll need to go to
+    vine["videoUrls"][0]["videoUrl"]
+
+
 | This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
 
 | You'll want to keep an eye out for PresserJavaScriptParseError because this will probably indicate that this is the case.
