@@ -4,7 +4,7 @@ with open("README.rst") as readme_file:
     long_description = readme_file.read()
 
 setup(name="Presser",
-    version="0.1.7",
+    version="0.1.8",
     packages=["presser",],
     license="GNU GPL v3.0",
     description="Extracts data from vine, in lieu of an API",
