@@ -32,17 +32,19 @@ So if you were using the "videoUrl" key, to get the equivalent URL in the new st
     vine["videoUrls"][0]["videoUrl"]
 
 
-| This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
+This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
 
-| You'll want to keep an eye out for PresserJavaScriptParseError because this will probably indicate that this is the case.
+You'll want to keep an eye out for PresserJavaScriptParseError because this will probably indicate that this is the case.
 
-| You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be node dependent, but as yet, I've not found a viable alternative.
+You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be node dependent, but as yet, I've not found a viable alternative.
 
-However, here is the example usage::
+| However, here is the example usage::
+
+.. code:: python
 
     from presser.presser import Presser
     press = Presser()
-    
+
     #For a vine id
     vine = press.get_data_for_vine_id("OBiwWuBm0Eg")
     
