@@ -144,7 +144,31 @@ class VineStructureTest(unittest.TestCase):
             u'shortId': u'M0WmADraAD2',
             u'thumbnailUrl': u'http://v.cdn.vine.co/r/thumbs/DEB2A6EAC91104202215885008896_27992670f1e.1.2.5318815706057142197.mp4.jpg?versionId=jBAUu6ahv1JwdKVNFg2jnwSf4PLlpvuO',
             u'userId': 1073609278625148900,
-            u'videoUrl': u'http://mtc.cdn.vine.co/r/videos/DFCD3B0B9C1104202213573693440_22f7d6615ca.1.2.5318815706057142197.mp4?versionId=jnyF8noA.fT_Egg2Yg1VUSxqjkdDHTZD'
+            u'videoUrl': None,
+            u'videoUrls': [
+                {
+                    'default': 1,
+                    'format': 'h264',
+                    'id': 'original',
+                    'idStr': 'original',
+                    'rate': 200,
+                    'videoUrl': 'http://mtc.cdn.vine.co/r/videos/DFCD3B0B9C1104202213573693440_22f7d6615ca.1.2.5318815706057142197.mp4?versionId=jnyF8noA.fT_Egg2Yg1VUSxqjkdDHTZD'
+                },
+                {
+                    'format': 'h264',
+                    'id': 'r1',
+                    'idStr': 'r1',
+                    'rate': 0,
+                    'videoUrl': 'http://mtc.cdn.vine.co/r/videos_r1/DFCD3B0B9C1104202213573693440_22f7d6615ca.1.2.5318815706057142197.mp4?versionId=.RofqiDr6rlf1snQgqJve9p.bjEpI720'
+                },
+                {
+                    'default': 1,
+                    'format': 'h264c',
+                    'id': 'r1',
+                    'idStr': 'r1',
+                    'rate': 0,
+                    'videoUrl': 'http://mtc.cdn.vine.co/r/videos_r1/DFCD3B0B9C1104202213573693440_22f7d6615ca.1.2.5318815706057142197.mp4?versionId=.RofqiDr6rlf1snQgqJve9p.bjEpI720'
+                }]
         }
         vine = self.presser.get_data_for_vine_from_url(EXPECTED_VINE_URL)
         for key, value in EXPECTED_STATIC_VALUES.items():

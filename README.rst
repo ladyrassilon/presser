@@ -17,17 +17,34 @@ Presser v0.1
     :alt: Development Status
 
 
-| This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
+Important Update 0.1.8
+======================
 
-| You'll want to keep an eye out for PresserJavaScriptParseError because this will probably indicate that this is the case.
+Vine has changed their video URL structure so now URLs are passed in as a list.
 
-| You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be node dependent, but as yet, I've not found a viable alternative.
+So if you were using the "videoUrl" key, to get the equivalent URL in the new structure.
+    
+.. code:: python
 
-However, here is the example usage::
+    # You'll need to instead of going to.
+    vine["videoUrl"]
+    # You'll need to go to
+    vine["videoUrls"][0]["videoUrl"]
+
+
+This is a simple library that attempts to extract the data for a vine from a given vine.co URL. Its a little rough and ready, and given that Vine can change their page design at any time, cannot be guaranteed to work.
+
+You'll want to keep an eye out for PresserJavaScriptParseError because this will probably indicate that this is the case.
+
+You will need Node installed, it does the evaluation of the javascript for more stable javascript data extraction. I am looking to find a viable alternative so the package will not be node dependent, but as yet, I've not found a viable alternative.
+
+| However, here is the example usage::
+
+.. code:: python
 
     from presser.presser import Presser
     press = Presser()
-    
+
     #For a vine id
     vine = press.get_data_for_vine_id("OBiwWuBm0Eg")
     
