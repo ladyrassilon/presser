@@ -6,13 +6,13 @@ Presser v0.1
     :target: https://coveralls.io/r/ladyrassilon/presser?branch=master
 .. image:: https://travis-ci.org/ladyrassilon/presser.svg?branch=master
     :target: https://travis-ci.org/ladyrassilon/presser
-.. image:: https://pypip.in/version/Presser/badge.svg
+.. image:: https://img.shields.io/pypi/v/Presser.svg
     :target: https://pypi.python.org/pypi/Presser/
     :alt: Latest Version
-.. image:: https://pypip.in/implementation/Presser/badge.svg
+.. image:: https://img.shields.io/pypi/implementation/Presser.svg
     :target: https://pypi.python.org/pypi/Presser/
     :alt: Supported Python implementations
-.. image:: https://pypip.in/status/Presser/badge.svg
+.. image:: https://img.shields.io/pypi/status/Presser.svg
     :target: https://pypi.python.org/pypi/Presser/
     :alt: Development Status
 
