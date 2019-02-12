@@ -59,3 +59,5 @@ Warning
 Vine does not permit scraping, so please do not use this in an automated fashion, but it should be okay if your workflow simplifies and speeds up the workflow of a user going to an url and extracting the data manually. 
 
 | If you try to do large batches of vine urls for extraction in a short period of time, then you will probably annoy Vine. Don't do this please.
+
+
